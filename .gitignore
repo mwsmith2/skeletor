@@ -1,0 +1,5 @@
+__pycache__
+build
+dist
+skeletor.egg-info
+skeletor/__pycache__
