@@ -49,10 +49,9 @@ def save_template(name, data):
         for i, file in enumerate(data[path]):
             src = os.path.join(path, file)
             m = hashlib.new('ripemd160')
-            m.update(open(src).read())
-            dest = os.path.join(cfg['loc'], '_files', m.digest())
-
-            data[path][i] = ':'.join([file, m.digest()])
+            m.update(open(src).read().encode('utf-8'))
+            dest = os.path.join(cfg['loc'], '_files', m.hexdigest())
+            data[path][i] = ':'.join([file, m.hexdigest()])
             shutil.copyfile(src, dest)
 
     if '.' in name:
